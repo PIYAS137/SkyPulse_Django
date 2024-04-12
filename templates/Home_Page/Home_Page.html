@@ -2,6 +2,34 @@
 
 
 {% block "leftAndRight" %}
-<div class="d-none d-md-block col-md-9 bg-black text-white">Middle</div>
-<div class="d-none d-md-block col-md-2 bg-danger text-white">RIGHT</div>
+<div class="d-none d-md-flex col-md-9 bg-black text-white" style="flex-direction: column;">
+    <!-- top box -->
+    <div style="flex-grow: 1;" class="row">
+        <div class="col-6 p-5 d-flex flex-column justify-content-around border-end border-white p-2 border-opacity-10">
+            <div>
+                <h1 class="fs-1">DHAKA</h1>
+                <p class="fs-10 text-secondary ">Bangladesh / Asia</p>
+            </div>
+            <div>
+                <h1 style="font-size: 70px;">35<sup>o</sup>C</h1>
+                <small class="text-secondary">Such a hot day</small>
+            </div>
+
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-center flex-column">
+            <img style="max-width: 200px;"
+                src="https://static.vecteezy.com/system/resources/previews/022/095/765/non_2x/cartoon-sun-icon-with-facial-expression-free-png.png"
+                alt="">
+            <small class="mt-3 fs-10 text-secondary">Sunny Day</small>
+            </div>
+    </div>
+    <!-- middle box -->
+    <div style="height: 25%; margin-bottom: 12px;background-color: rgb(21, 21, 21); border-radius:30px; padding: 1rem;">
+        MIDDLE</div>
+    <!-- bottom box -->
+    <div style="height: 25%; margin-bottom: 12px;background-color: rgb(21, 21, 21); border-radius:30px;padding: 1rem;">
+        LOW</div>
+</div>
+<div class="d-none d-md-flex col-md-2 text-white bg-black bg-gradient">
+</div>
 {% endblock "leftAndRight" %}
