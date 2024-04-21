@@ -1,7 +1,59 @@
 {% extends 'Common/Base.html' %}
 
-
 {% block "leftAndRight" %}
+<!-- JS CODE FOR GEO LOCATION -->
+
+<!-- AJAX CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- AJAX CDN -->
+<script>
+    $(document).ready(function () {
+        getLocation();
+    });
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(sendPosition, handleLocationError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function sendPosition(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        fetchWeather(lat, lon);
+    }
+
+    function handleLocationError(error) {
+        console.error('Error getting geolocation:', error.message);
+        // Handle error here, such as showing a message to the user or using default coordinates
+    }
+
+    function fetchWeather(lat, lon) {
+        $.ajax({
+            type: 'GET',
+            url: '/',  
+            data: {
+                'lat': lat,
+                'lon': lon
+            },
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.error('Error:', textStatus, errorThrown);
+            }
+        });
+    }
+</script>
+
+
+
+
+<!-- JS CODE FOR GEO LOCATION -->
+
+
 <div class="d-none d-md-flex col-md-9 bg-black text-white" style="flex-direction: column;">
     <!-- top box -->
     <div style="flex-grow: 1;" class="row">
@@ -20,12 +72,23 @@
             <img style="max-width: 200px;"
                 src="https://static.vecteezy.com/system/resources/previews/022/095/765/non_2x/cartoon-sun-icon-with-facial-expression-free-png.png"
                 alt="">
-            <small class="mt-3 fs-10 text-secondary">Sunny Day</small>
-            </div>
+            <small class="mt-3 fs-6 text-secondary">Sunny Day</small>
+        </div>
     </div>
     <!-- middle box -->
     <div style="height: 25%; margin-bottom: 12px;background-color: rgb(21, 21, 21); border-radius:30px; padding: 1rem;">
-        MIDDLE</div>
+        {% if weather_data %}
+        <p>longitude : {{weather_data.coord.lon}}</p>
+        <p>lattitude : {{weather_data.coord.lat}}</p>
+        <p>lattitude : {{weather_data.main.temp}}</p>
+        {% elif error_message %}
+        <p>{{error_message}}</p>
+        {% else %}
+        <p>There is an server side error</p>
+        {% endif %}
+
+        <p>{{x}}</p>
+    </div>
     <!-- bottom box -->
     <div style="height: 25%; margin-bottom: 12px;background-color: rgb(21, 21, 21); border-radius:30px;padding: 1rem;">
         LOW</div>
