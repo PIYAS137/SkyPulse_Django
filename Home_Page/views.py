@@ -33,6 +33,47 @@ def get_next_days_data(lat,lon):
         return None
 
 
+def weather_condition_image(text,day):
+    condition_text = text.lower()
+    print(text,day)
+    
+    # IF DAY
+    if day == 1:
+        if "sunny" in condition_text:
+            return "https://i.ibb.co/Pw7Zds0/pngwing-com-1.png"
+        elif "partly cloudy" in condition_text:
+            return "https://i.ibb.co/4sVRxqR/pngwing-com-2.png"
+        elif "cloudy" in condition_text:
+            return "https://i.ibb.co/j3SRfXy/pngwing-com-4.png"
+        elif "overcast" in condition_text:
+            return "https://i.ibb.co/j3SRfXy/pngwing-com-4.png"
+        elif "rain" in condition_text:
+            return "https://i.ibb.co/GM4FDGW/pngwing-com-6.png"
+        elif "drizzle" in condition_text:
+            return "https://i.ibb.co/GM4FDGW/pngwing-com-6.png"
+        elif "fog" in condition_text:
+            return "https://i.ibb.co/4sVRxqR/pngwing-com-2.png"
+    
+    # IF NIGHT
+    else :
+        if "clear" in condition_text:
+            print("CLEAR===========>")
+            return "https://i.ibb.co/9TrFLZM/pngwing-com.png"
+        elif "partly cloudy" in condition_text:
+            return "https://i.ibb.co/1JwP8yS/pngwing-com-3.png"
+        elif "cloudy" in condition_text:
+            return "https://i.ibb.co/j3SRfXy/pngwing-com-4.png"
+        elif "overcast" in condition_text:
+            return "https://i.ibb.co/j3SRfXy/pngwing-com-4.png"
+        elif "rain" in condition_text:
+            return "https://i.ibb.co/F6rzxLZ/pngwing-com-5.png"
+        elif "drizzle" in condition_text:
+            return "https://i.ibb.co/F6rzxLZ/pngwing-com-5.png"
+        elif "fog" in condition_text:
+            return "https://i.ibb.co/1JwP8yS/pngwing-com-3.png"
+
+
+
 
 def Render_HomePage(req):
     # Get latitude and longitude from the query params
@@ -60,7 +101,15 @@ def Render_HomePage(req):
     lon = 90.3842619
 
     weather_data = get_weather_data(lat, lon)
-    print(weather_data)
+    weather_condition_text = weather_data["current"]["condition"]["text"]
+    weather_condition_is_day = weather_data["current"]["is_day"]
+
+
+
+    weather_image = weather_condition_image(weather_condition_text,weather_condition_is_day)
+    print("=====>>>>",weather_image)
+    weather_data['current']['max_temp_c'] = weather_data['current']['feelslike_c'] + 5
+    weather_data['current']['min_temp_c'] = weather_data['current']['feelslike_c'] - 9
     hourly_data = get_hourly_data(lat,lon)
     next_days_data = get_next_days_data(lat,lon)
 
@@ -68,7 +117,7 @@ def Render_HomePage(req):
 
     # print("====== HR =======>>>>>",hourly_data)
     if weather_data : 
-        return render(req, 'Home_Page/Home_Page.html', context={'weather_data': weather_data,'final_hour_res':final_hour_res,'next_days_data':next_days_data})
+        return render(req, 'Home_Page/Home_Page.html', context={'weather_data': weather_data,'final_hour_res':final_hour_res,'next_days_data':next_days_data,'weather_image':weather_image})
             # If the request was not successful, handle the error
     else:
         return render(req, 'Home_Page/Home_Page.html', context={'error_message': 'Failed to retrieve weather data'})

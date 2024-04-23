@@ -59,18 +59,18 @@
     <div style="flex-grow: 1;" class="row">
         <div class="col-6 p-5 d-flex flex-column justify-content-around border-end border-white p-2 border-opacity-10">
             <div>
-                <h1 class="fs-1">DHAKA</h1>
-                <p class="fs-10 text-secondary ">Bangladesh / Asia</p>
+                <h1 class="fs-1">{{weather_data.location.name | upper}}</h1>
+                <p class="fs-10 text-secondary ">{{weather_data.location.country}}/{{weather_data.location.tz_id}}</p>
             </div>
             <div>
                 <h1 style="font-size: 70px;">{{weather_data.current.temp_c}}<sup>o</sup>C</h1>
-                <small class="text-secondary">Such a hot day</small>
+                <small class="text-secondary">Sky Condition : {{weather_data.current.condition.text}}</small>
             </div>
 
         </div>
         <div class="col-6 d-flex align-items-center justify-content-center flex-column">
-            <img style="max-width: 200px;" src="https://i.ibb.co/1RKLYnq/thunderstorm-1.png" alt="">
-            <small class="mt-3 fs-6 text-secondary">Sunny Day</small>
+            <img style="max-width: 200px;" src={{weather_image}} alt="">
+            <small class="mt-3 fs-6 text-secondary">{{weather_data.current.condition.text}}</small>
         </div>
     </div>
     <!-- middle box -->
@@ -94,9 +94,9 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Max Temp : 30.56 <sup>o</sup>C
+                Max Temp : {{weather_data.current.max_temp_c |floatformat:"2"}} <sup>o</sup>C
             </div>
-            <h6 class="mt-2">Fells Like : 30.65 <sup>o</sup>C</h6>
+            <h6 class="mt-2">Fells Like : {{weather_data.current.feelslike_c |floatformat:"2"}} <sup>o</sup>C</h6>
             <div class=" bg-dark p-3 rounded-3">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     stroke="#616161">
@@ -113,7 +113,7 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Min Temp : 30.56 <sup>o</sup>C
+                Min Temp : {{weather_data.current.min_temp_c |floatformat:"2"}} <sup>o</sup>C
             </div>
         </div>
         <div class="d-flex align-items-center flex-column my-auto">
@@ -133,9 +133,9 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Humidity : 30.56 <sup>o</sup>C
+                Humidity : {{weather_data.current.humidity}} g.m<sup>-3</sup>
             </div>
-            <h6 class="mt-2">Pressure : 30.65 <sup>o</sup>C</h6>
+            <h6 class="mt-2">Pressure : {{weather_data.current.pressure_in}}<sub>/inch</sub></h6>
             <div class=" bg-dark p-3 rounded-3">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     stroke="#616161">
@@ -152,7 +152,7 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Visiblity : 30.56 <sup>o</sup>C
+                Visiblity Ar : {{weather_data.current.vis_km}}<sub>/km</sub>
             </div>
         </div>
         <div class="d-flex align-items-center flex-column my-auto">
@@ -172,9 +172,9 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Humidity : 30.56 <sup>o</sup>C
+                W Degree : {{weather_data.current.wind_degree}} <sup>o</sup>
             </div>
-            <h6 class="mt-2">WIND : 30.65 <sup>o</sup>C</h6>
+            <h6 class="mt-2">Wind Speed : {{weather_data.current.wind_kph}} <sub>/kph</sub></h6>
             <div class=" bg-dark p-3 rounded-3">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     stroke="#616161">
@@ -191,7 +191,7 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Visiblity : 30.56 <sup>o</sup>C
+                Wind Direction : {{weather_data.current.wind_dir}}
             </div>
         </div>
         <div class="d-flex align-items-center flex-column my-auto">
@@ -211,9 +211,9 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Humidity : 30.56 <sup>o</sup>C
+                Country : {{weather_data.location.country}}
             </div>
-            <h6 class="mt-2">AREA : ASIA <sup>o</sup>C</h6>
+            <h6 class="mt-2">City : {{weather_data.location.name}} </h6>
             <div class=" bg-dark p-3 rounded-3">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     stroke="#616161">
@@ -230,12 +230,9 @@
                             stroke-width="2"></circle>
                     </g>
                 </svg>
-                Visiblity : 30.56 <sup>o</sup>C
+                Region : {{weather_data.location.tz_id}}
             </div>
         </div>
-
-
-
 
         {% elif error_message %}
         <p>{{error_message}}</p>
@@ -355,7 +352,8 @@
                         heat exhaustion are possible. Continuing activity could result in heat stroke</p>
                 </div>
             </div>
-            <!-- heat umbrella alert -->
+            {% if weather_data.current.is_day == 1 %}
+            <!-- heat umbrella alert (IS DAY) -->
             <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
                 <div class=" d-flex justify-content-between">
                     <div>
@@ -402,7 +400,34 @@
                         heat exhaustion are likely; heat stroke is probable with continued activity.</p>
                 </div>
             </div>
-
+            {% endif %}
+            <!-- carry water alert (IS DAY) -->
+            <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                <div class=" d-flex justify-content-between">
+                    <div>
+                        <svg width="40" height="40" fill="#57d5ff" viewBox="0 0 50 50"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            stroke="#57d5ff">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M22 0C20.355469 0 19 1.355469 19 3L19 6C19 6.523438 19.183594 7.058594 19.5625 7.4375C19.84375 7.71875 20.203125 7.898438 20.59375 7.96875C20.445313 8.085938 20.261719 8.175781 20.03125 8.21875L20 8.21875C15.457031 9.214844 12 13.222656 12 18.09375L12 21C12 22.257813 12.890625 23.152344 14 23.59375L14 36.40625C12.890625 36.847656 12 37.742188 12 39L12 45C12 47.746094 14.253906 50 17 50L33 50C35.746094 50 38 47.746094 38 45L38 39C38 37.742188 37.109375 36.847656 36 36.40625L36 23.59375C37.109375 23.152344 38 22.257813 38 21L38 18.09375C38 13.222656 34.542969 9.214844 30 8.21875L29.96875 8.21875C29.738281 8.175781 29.554688 8.085938 29.40625 7.96875C29.796875 7.898438 30.15625 7.71875 30.4375 7.4375C30.816406 7.058594 31 6.523438 31 6L31 3C31 1.355469 29.644531 0 28 0 Z M 22 2L28 2C28.554688 2 29 2.445313 29 3L29 6L21 6L21 3C21 2.445313 21.445313 2 22 2 Z M 22.65625 8L27.34375 8C27.707031 9.046875 28.445313 9.929688 29.59375 10.15625L29.59375 10.1875C29.601563 10.1875 29.617188 10.1875 29.625 10.1875C33.269531 11 36 14.175781 36 18.09375L36 21C36 21.554688 35.554688 22 35 22L18 22L18 24L34 24L34 36L18 36L18 38L35 38C35.554688 38 36 38.445313 36 39L36 45C36 46.65625 34.65625 48 33 48L17 48C15.34375 48 14 46.65625 14 45L14 39C14 38.445313 14.445313 38 15 38L16 38L16 22L15 22C14.445313 22 14 21.554688 14 21L14 18.09375C14 14.175781 16.730469 11 20.375 10.1875C20.390625 10.183594 20.390625 10.160156 20.40625 10.15625C21.554688 9.929688 22.292969 9.046875 22.65625 8Z">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <h6 class="text-warning text-end">Carry Water</h6>
+                        <h5 class="text-end" style="margin-top: -.5rem;">Dehydration Alert</h5>
+                    </div>
+                </div>
+                <div>
+                    <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Dehydration
+                        occurs when your body doesn't have enough water and other fluids to carry out its normal
+                        functions.</p>
+                </div>
+            </div>
             {% elif weather_data.current.temp_c > 41 and weather_data.current.temp_c < 54 %} <!-- danger heat alert -->
                 <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
                     <div class=" d-flex justify-content-between">
@@ -420,11 +445,13 @@
                         </div>
                     </div>
                     <div>
-                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps and
+                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps
+                            and
                             heat exhaustion are likely; heat stroke is probable with continued activity.</p>
                     </div>
                 </div>
-                <!-- heat umbrella alert -->
+                {% if weather_data.current.is_day == 1 %}
+                <!-- heat umbrella alert (IS DAY) -->
                 <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
                     <div class=" d-flex justify-content-between">
                         <div>
@@ -467,18 +494,55 @@
                         </div>
                     </div>
                     <div>
-                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps and
+                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps
+                            and
                             heat exhaustion are likely; heat stroke is probable with continued activity.</p>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                <!-- carry water alert (IS DAY) -->
+                <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                    <div class=" d-flex justify-content-between">
+                        <div>
+                            <svg width="40" height="40" fill="#57d5ff" viewBox="0 0 50 50"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                stroke="#57d5ff">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M22 0C20.355469 0 19 1.355469 19 3L19 6C19 6.523438 19.183594 7.058594 19.5625 7.4375C19.84375 7.71875 20.203125 7.898438 20.59375 7.96875C20.445313 8.085938 20.261719 8.175781 20.03125 8.21875L20 8.21875C15.457031 9.214844 12 13.222656 12 18.09375L12 21C12 22.257813 12.890625 23.152344 14 23.59375L14 36.40625C12.890625 36.847656 12 37.742188 12 39L12 45C12 47.746094 14.253906 50 17 50L33 50C35.746094 50 38 47.746094 38 45L38 39C38 37.742188 37.109375 36.847656 36 36.40625L36 23.59375C37.109375 23.152344 38 22.257813 38 21L38 18.09375C38 13.222656 34.542969 9.214844 30 8.21875L29.96875 8.21875C29.738281 8.175781 29.554688 8.085938 29.40625 7.96875C29.796875 7.898438 30.15625 7.71875 30.4375 7.4375C30.816406 7.058594 31 6.523438 31 6L31 3C31 1.355469 29.644531 0 28 0 Z M 22 2L28 2C28.554688 2 29 2.445313 29 3L29 6L21 6L21 3C21 2.445313 21.445313 2 22 2 Z M 22.65625 8L27.34375 8C27.707031 9.046875 28.445313 9.929688 29.59375 10.15625L29.59375 10.1875C29.601563 10.1875 29.617188 10.1875 29.625 10.1875C33.269531 11 36 14.175781 36 18.09375L36 21C36 21.554688 35.554688 22 35 22L18 22L18 24L34 24L34 36L18 36L18 38L35 38C35.554688 38 36 38.445313 36 39L36 45C36 46.65625 34.65625 48 33 48L17 48C15.34375 48 14 46.65625 14 45L14 39C14 38.445313 14.445313 38 15 38L16 38L16 22L15 22C14.445313 22 14 21.554688 14 21L14 18.09375C14 14.175781 16.730469 11 20.375 10.1875C20.390625 10.183594 20.390625 10.160156 20.40625 10.15625C21.554688 9.929688 22.292969 9.046875 22.65625 8Z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6 class="text-warning text-end">Carry Water</h6>
+                            <h5 class="text-end" style="margin-top: -.5rem;">Dehydration Alert</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Dehydration
+                            occurs when your body doesn't have enough water and other fluids to carry out its normal
+                            functions.</p>
                     </div>
                 </div>
 
                 {% else %}
-                <p class="rounded-2 py-1 text-center mt-3 bg-success text-white" style="font-weight: bold;">No Alert For Now</p>
+                <p class="rounded-2 py-1 text-center mt-3 bg-success text-white" style="font-weight: bold;">No
+                    Alert
+                    For
+                    Now</p>
 
                 {% endif %}
                 <!-- {% endif %} -->
 
     </div>
+
+
+    <!-- Next 3 days forecast -->
     <div>
         <h4 class=" text-center text-info mt-3">Next 3 Days Forcast</h4>
         {% for one in next_days_data.forecast.forecastday %}
