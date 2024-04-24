@@ -107,7 +107,6 @@ def Render_HomePage(req):
 
 
     weather_image = weather_condition_image(weather_condition_text,weather_condition_is_day)
-    print("=====>>>>",weather_image)
     weather_data['current']['max_temp_c'] = weather_data['current']['feelslike_c'] + 5
     weather_data['current']['min_temp_c'] = weather_data['current']['feelslike_c'] - 9
     hourly_data = get_hourly_data(lat,lon)

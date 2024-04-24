@@ -18,52 +18,40 @@
         <div>
             <!-- middle box -->
             {% if weather_data %}
-            <div class="d-flex justify-content-around"
+            <div class="d-flex justify-content-around "
                 style="height: 25%; margin-bottom: 12px;background-color: rgb(21, 21, 21); border-radius:10px; padding: 2rem;">
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 <div class="d-flex align-items-center flex-column my-auto">
-                    <div class=" bg-dark p-3 rounded-3">
-                        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" stroke="#616161">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <path
-                                    d="M18 16.0156C19.2447 16.5445 20 17.2392 20 18C20 19.6568 16.4183 21 12 21C7.58172 21 4 19.6568 4 18C4 17.2392 4.75527 16.5445 6 16.0156"
-                                    stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                </path>
-                                <path
-                                    d="M17 8.44444C17 11.5372 12 17 12 17C12 17 7 11.5372 7 8.44444C7 5.35165 9.23858 3 12 3C14.7614 3 17 5.35165 17 8.44444Z"
-                                    stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                </path>
-                                <circle cx="12" cy="8" r="1" stroke="#454545" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"></circle>
-                            </g>
-                        </svg>
-                        Max Temp : {{weather_data.current.max_temp_c |floatformat:"2"}} <sup>o</sup>C
+                    <div class=" rounded-3">
+                    <div class="d-flex flex-column align-items-center">
+                        <img width="100" src="{{weather_image}}" alt="">
+                        <h1 class="text-center">30<sup>o</sup>C</h1>
                     </div>
-                    <h6 class="mt-2">Fells Like : {{weather_data.current.feelslike_c |floatformat:"2"}} <sup>o</sup>C
-                    </h6>
-                    <div class=" bg-dark p-3 rounded-3">
-                        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" stroke="#616161">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <path
-                                    d="M18 16.0156C19.2447 16.5445 20 17.2392 20 18C20 19.6568 16.4183 21 12 21C7.58172 21 4 19.6568 4 18C4 17.2392 4.75527 16.5445 6 16.0156"
-                                    stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                </path>
-                                <path
-                                    d="M17 8.44444C17 11.5372 12 17 12 17C12 17 7 11.5372 7 8.44444C7 5.35165 9.23858 3 12 3C14.7614 3 17 5.35165 17 8.44444Z"
-                                    stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                </path>
-                                <circle cx="12" cy="8" r="1" stroke="#454545" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"></circle>
-                            </g>
-                        </svg>
-                        Min Temp : {{weather_data.current.min_temp_c |floatformat:"2"}} <sup>o</sup>C
+                    <h6 class="text-secondary text-center">Condition : {{text}}</h6>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="d-flex align-items-center flex-column my-auto">
                     <div class=" bg-dark p-3 rounded-3">
                         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"

@@ -2,5 +2,63 @@
 
 
 {% block "leftAndRight" %}
-<div class="d-none d-md-block col-md-11 bg-black text-white">Setting</div>
+
+
+
+
+
+
+<div class="d-none d-md-block col-md-11 bg-black text-white" >
+
+
+    <br>
+    <h1>Theme</h1>
+
+    <div class="wrapper block">
+        <input type="checkbox" id="hide-checkbox">
+        <label for="hide-checkbox" class="toggle">
+            <span class="toggle-button">
+                <span class="crater crater-1"></span>
+                <span class="crater crater-2"></span>
+                <span class="crater crater-3"></span>
+                <span class="crater crater-4"></span>
+                <span class="crater crater-5"></span>
+                <span class="crater crater-6"></span>
+                <span class="crater crater-7"></span>
+            </span>
+            <span class="star star-1"></span>
+            <span class="star star-2"></span>
+            <span class="star star-3"></span>
+            <span class="star star-4"></span>
+            <span class="star star-5"></span>
+            <span class="star star-6"></span>
+            <span class="star star-7"></span>
+            <span class="star star-8"></span>
+        </label>
+    </div>
+
+
+
+
+</div>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let targetElem = document.getElementById('hide-checkbox');
+        targetElem.addEventListener('change', function () {
+            if (targetElem.checked) {
+                localStorage.setItem("SkyPulseTheme", true)
+            } else {
+                localStorage.setItem("SkyPulseTheme", false)
+            }
+        })
+        localStorage.setItem("SkyPulseTheme", false)
+    })
+
+
+
+
+</script>
 {% endblock "leftAndRight" %}
