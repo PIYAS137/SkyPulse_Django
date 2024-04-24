@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'Home_Page',
     'About_Page',
     'Alert_Page',
-    'Setting_Page'
+    'Setting_Page',
+    'Search_Page'
 ]
 
 MIDDLEWARE = [

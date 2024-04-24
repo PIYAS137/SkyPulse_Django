@@ -23,4 +23,5 @@ urlpatterns = [
     path('about/',include('About_Page.urls')),
     path('setting/',include('Setting_Page.urls')),
     path('alert/',include('Alert_Page.urls')),
+    path('search/',include('Search_Page.urls'))
 ]

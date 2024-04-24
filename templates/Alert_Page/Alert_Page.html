@@ -2,5 +2,469 @@
 
 
 {% block "leftAndRight" %}
-<div class="d-none d-md-block col-md-11 bg-black text-white">Alert</div>
+<div class="d-none d-md-block col-md-11 bg-black text-white ">
+
+    <div class="row container mx-auto">
+        <!-- LEFT COL -->
+        <div class=" col">
+            <div class="flex-grow-1 container">
+                <h3 class="text-center mt-5 text-warning">Current Alerts</h3>
+                <p class=" text-dark-emphasis mb-5 text-center" style="margin-top: -.8rem;">----------------- based on real time weather -----------------</p>
+                <!-- {% if weather_data and weather_data.current and weather_data.current.temp_c %} -->
+                {% if weather_data.current.precip_mm > 0 or weather_data.current.precip_in > 0 %}
+                <!-- rain alert -->
+                <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                    <div class=" d-flex justify-content-between">
+                        <div>
+                            <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                                class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000"
+                                width="40" height="40">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill="#66757F"
+                                        d="M9 28.5a1.5 1.5 0 0 1 3 0v.5s0 3 3 3s3-3 3-3V3.5a1.5 1.5 0 1 1 3 0V29s0 6-6 6s-6-6-6-6v-.5z">
+                                    </path>
+                                    <path fill="#744EAA"
+                                        d="M19.5 4C28.612 4 36 9.82 36 17c0 0 0 2-1 2s-3-2-3-2H7s-2 2-3 2s-1-2-1-2C3 9.82 10.387 4 19.5 4z">
+                                    </path>
+                                    <path fill="#9266CC"
+                                        d="M19.5 4C26.403 4 32 9.82 32 17c0 0 0 2-2 2s-5-2-5-2H14s-3 2-5 2s-2-2-2-2C7 9.82 12.596 4 19.5 4z">
+                                    </path>
+                                    <path fill="#744EAA"
+                                        d="M19.5 4C23.09 4 25 9.82 25 17c0 0-3 2-5 2h-1c-2 0-5-2-5-2c0-7.18 1.91-13 5.5-13z">
+                                    </path>
+                                    <path fill="#5DADEC"
+                                        d="M30.383 4.472a2.964 2.964 0 0 0 1.028 4.099c1.431.852 3.291.398 4.154-1.014a2.949 2.949 0 0 0-.021-3.114L33.061.09l-2.678 4.382zm-8.001 3a2.964 2.964 0 0 0 1.028 4.099c1.431.852 3.291.398 4.154-1.014a2.949 2.949 0 0 0-.021-3.114L25.061 3.09l-2.679 4.382zm-11.947-3a2.964 2.964 0 0 0 1.028 4.099c1.431.852 3.291.398 4.154-1.014a2.944 2.944 0 0 0-.022-3.114L13.114.09l-2.679 4.382zm-10 5.91a2.964 2.964 0 0 0 1.028 4.099c1.431.851 3.291.398 4.154-1.014a2.944 2.944 0 0 0-.022-3.114L3.114 6L.435 10.382z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6 style="color: aqua;" class="text-end">Use Umbrella</h6>
+                            <h5 style="margin-top: -.5rem;" class=" text-end">Rain Alert</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-align: justify; font-size: 14px; color: gray;line-height: 14px;">Heat cramps and
+                            heat
+                            exhaustion are likely; heat stroke is probable with continued activity.</p>
+                    </div>
+                </div>
+
+                {% elif weather_data.current.temp_c > 31 and weather_data.current.temp_c < 42 %} <!-- extereme heat
+                    alert -->
+                    <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                        <div class=" d-flex justify-content-between">
+                            <div>
+                                <svg viewBox="0 0 1024 1024" class="icon" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" fill="#000000" width="40" height="40">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M570.8 742c0.5-2.9 0.9-5.8 0.9-8.8V418.5H458.4v314.6c0 3 0.4 5.9 0.9 8.8-34.3 19.5-57.5 56.3-57.5 98.5 0 62.6 50.7 113.3 113.3 113.3 62.6 0 113.3-50.7 113.3-113.3-0.1-42.2-23.3-79-57.6-98.4z"
+                                            fill="#ff0033"></path>
+                                        <path
+                                            d="M594.3 730.3V194.8c0-43.7-35.6-79.3-79.3-79.3s-79.3 35.6-79.3 79.3v535.4c-35.2 25.4-56.6 66.5-56.6 110.2 0 75 61 135.9 135.9 135.9s136-60.8 136-135.8c0-43.7-21.4-84.8-56.7-110.2zM515 931.1c-50 0-90.6-40.6-90.6-90.6 0-32.1 17.4-62.1 45.3-78.4 7-4 11.3-11.5 11.3-19.6v-40.8h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481V498h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481V226h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-8.5c0-18.7 15.2-34 34-34 18.7 0 34 15.2 34 34v547.7c0 8.1 4.3 15.6 11.3 19.6 28 16.2 45.3 46.2 45.3 78.4 0.1 49.9-40.6 90.5-90.6 90.5z"
+                                            fill="#454545"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div>
+                                <h6 class=" text-warning text-end">Heat Alert</h6>
+                                <h5 style="margin-top: -.5rem;" class=" text-end">Extreme Caution</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps
+                                and
+                                heat exhaustion are possible. Continuing activity could result in heat stroke</p>
+                        </div>
+                    </div>
+                    {% if weather_data.current.is_day == 1 %}
+                    <!-- heat umbrella alert (IS DAY) -->
+                    <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                        <div class=" d-flex justify-content-between">
+                            <div>
+                                <svg height="40px" width="40px" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path style="fill:#FFB464;"
+                                            d="M35.325,247.172c17.628-17.655,26.455,0,26.455,0l194.207-220.69 C135.403,26.483,37.469,127.142,35.325,247.172z">
+                                        </path>
+                                        <path style="fill:#AFB9D2;"
+                                            d="M282.468,512c-19.47,0-35.31-15.84-35.31-35.31V8.828c0-4.875,3.953-8.828,8.828-8.828 s8.828,3.953,8.828,8.828V476.69c0,9.735,7.921,17.655,17.655,17.655c9.735,0,17.655-7.921,17.655-17.655v-17.655 c0-4.875,3.953-8.828,8.828-8.828s8.828,3.953,8.828,8.828v17.655C317.779,496.16,301.939,512,282.468,512z">
+                                        </path>
+                                        <path style="fill:#FFC36E;"
+                                            d="M61.807,247.172c35.283-17.655,52.938,0,52.938,0l141.241-220.69 C149.875,26.483,63.694,127.142,61.807,247.172z">
+                                        </path>
+                                        <path style="fill:#FFB464;"
+                                            d="M114.773,247.172c-0.028,0,44.11-17.655,79.421,0l61.793-220.69 C178.818,26.483,116.145,127.142,114.773,247.172z">
+                                        </path>
+                                        <path style="fill:#FFD782;"
+                                            d="M476.675,247.172c-17.628-17.655-26.455,0-26.455,0L256.013,26.483 C376.597,26.483,474.531,127.142,476.675,247.172z">
+                                        </path>
+                                        <path style="fill:#FFC36E;"
+                                            d="M450.193,247.172c-35.283-17.655-52.938,0-52.938,0L256.013,26.483 C362.125,26.483,448.306,127.142,450.193,247.172z">
+                                        </path>
+                                        <path style="fill:#FFD782;"
+                                            d="M397.227,247.172c0.028,0-44.11-17.655-79.421,0l-61.793-220.69 C333.182,26.483,395.855,127.142,397.227,247.172z">
+                                        </path>
+                                        <path style="fill:#FFC36E;"
+                                            d="M255.986,233.518c26.585,0,49.717,5.514,61.766,13.654c-0.6-120.031-28.013-220.69-61.766-220.69 s-61.165,100.659-61.766,220.69C206.27,239.032,229.4,233.518,255.986,233.518z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div>
+                                <h6 class="text-warning text-end">Use Umbrella</h6>
+                                <h5 class="text-end" style="margin-top: -.5rem;">Drought Alert</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps
+                                and
+                                heat exhaustion are likely; heat stroke is probable with continued activity.</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- carry water alert (IS DAY) -->
+                    <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                        <div class=" d-flex justify-content-between">
+                            <div>
+                                <svg width="40" height="40" fill="#57d5ff" viewBox="0 0 50 50"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    stroke="#57d5ff">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M22 0C20.355469 0 19 1.355469 19 3L19 6C19 6.523438 19.183594 7.058594 19.5625 7.4375C19.84375 7.71875 20.203125 7.898438 20.59375 7.96875C20.445313 8.085938 20.261719 8.175781 20.03125 8.21875L20 8.21875C15.457031 9.214844 12 13.222656 12 18.09375L12 21C12 22.257813 12.890625 23.152344 14 23.59375L14 36.40625C12.890625 36.847656 12 37.742188 12 39L12 45C12 47.746094 14.253906 50 17 50L33 50C35.746094 50 38 47.746094 38 45L38 39C38 37.742188 37.109375 36.847656 36 36.40625L36 23.59375C37.109375 23.152344 38 22.257813 38 21L38 18.09375C38 13.222656 34.542969 9.214844 30 8.21875L29.96875 8.21875C29.738281 8.175781 29.554688 8.085938 29.40625 7.96875C29.796875 7.898438 30.15625 7.71875 30.4375 7.4375C30.816406 7.058594 31 6.523438 31 6L31 3C31 1.355469 29.644531 0 28 0 Z M 22 2L28 2C28.554688 2 29 2.445313 29 3L29 6L21 6L21 3C21 2.445313 21.445313 2 22 2 Z M 22.65625 8L27.34375 8C27.707031 9.046875 28.445313 9.929688 29.59375 10.15625L29.59375 10.1875C29.601563 10.1875 29.617188 10.1875 29.625 10.1875C33.269531 11 36 14.175781 36 18.09375L36 21C36 21.554688 35.554688 22 35 22L18 22L18 24L34 24L34 36L18 36L18 38L35 38C35.554688 38 36 38.445313 36 39L36 45C36 46.65625 34.65625 48 33 48L17 48C15.34375 48 14 46.65625 14 45L14 39C14 38.445313 14.445313 38 15 38L16 38L16 22L15 22C14.445313 22 14 21.554688 14 21L14 18.09375C14 14.175781 16.730469 11 20.375 10.1875C20.390625 10.183594 20.390625 10.160156 20.40625 10.15625C21.554688 9.929688 22.292969 9.046875 22.65625 8Z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div>
+                                <h6 class="text-warning text-end">Carry Water</h6>
+                                <h5 class="text-end" style="margin-top: -.5rem;">Dehydration Alert</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Dehydration
+                                occurs when your body doesn't have enough water and other fluids to carry out its normal
+                                functions.</p>
+                        </div>
+                    </div>
+                    {% elif weather_data.current.temp_c > 41 and weather_data.current.temp_c < 54 %} <!-- danger heat
+                        alert -->
+                        <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                            <div class=" d-flex justify-content-between">
+                                <div>
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="35"
+                                        height="35">
+                                        <path
+                                            d="M21.7605 15.92L15.3605 4.4C14.5005 2.85 13.3105 2 12.0005 2C10.6905 2 9.50047 2.85 8.64047 4.4L2.24047 15.92C1.43047 17.39 1.34047 18.8 1.99047 19.91C2.64047 21.02 3.92047 21.63 5.60047 21.63H18.4005C20.0805 21.63 21.3605 21.02 22.0105 19.91C22.6605 18.8 22.5705 17.38 21.7605 15.92ZM11.2505 9C11.2505 8.59 11.5905 8.25 12.0005 8.25C12.4105 8.25 12.7505 8.59 12.7505 9V14C12.7505 14.41 12.4105 14.75 12.0005 14.75C11.5905 14.75 11.2505 14.41 11.2505 14V9ZM12.7105 17.71C12.6605 17.75 12.6105 17.79 12.5605 17.83C12.5005 17.87 12.4405 17.9 12.3805 17.92C12.3205 17.95 12.2605 17.97 12.1905 17.98C12.1305 17.99 12.0605 18 12.0005 18C11.9405 18 11.8705 17.99 11.8005 17.98C11.7405 17.97 11.6805 17.95 11.6205 17.92C11.5605 17.9 11.5005 17.87 11.4405 17.83C11.3905 17.79 11.3405 17.75 11.2905 17.71C11.1105 17.52 11.0005 17.26 11.0005 17C11.0005 16.74 11.1105 16.48 11.2905 16.29C11.3405 16.25 11.3905 16.21 11.4405 16.17C11.5005 16.13 11.5605 16.1 11.6205 16.08C11.6805 16.05 11.7405 16.03 11.8005 16.02C11.9305 15.99 12.0705 15.99 12.1905 16.02C12.2605 16.03 12.3205 16.05 12.3805 16.08C12.4405 16.1 12.5005 16.13 12.5605 16.17C12.6105 16.21 12.6605 16.25 12.7105 16.29C12.8905 16.48 13.0005 16.74 13.0005 17C13.0005 17.26 12.8905 17.52 12.7105 17.71Z"
+                                            fill="#ff0000"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h6 class=" text-danger text-end">Heat Alert</h6>
+                                    <h5 style="margin-top: -.5rem;" class=" text-end">Danger Caution</h5>
+                                </div>
+                            </div>
+                            <div>
+                                <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat
+                                    cramps
+                                    and
+                                    heat exhaustion are likely; heat stroke is probable with continued activity.</p>
+                            </div>
+                        </div>
+                        {% if weather_data.current.is_day == 1 %}
+                        <!-- heat umbrella alert (IS DAY) -->
+                        <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                            <div class=" d-flex justify-content-between">
+                                <div>
+                                    <svg height="40px" width="40px" version="1.1" id="Layer_1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path style="fill:#FFB464;"
+                                                d="M35.325,247.172c17.628-17.655,26.455,0,26.455,0l194.207-220.69 C135.403,26.483,37.469,127.142,35.325,247.172z">
+                                            </path>
+                                            <path style="fill:#AFB9D2;"
+                                                d="M282.468,512c-19.47,0-35.31-15.84-35.31-35.31V8.828c0-4.875,3.953-8.828,8.828-8.828 s8.828,3.953,8.828,8.828V476.69c0,9.735,7.921,17.655,17.655,17.655c9.735,0,17.655-7.921,17.655-17.655v-17.655 c0-4.875,3.953-8.828,8.828-8.828s8.828,3.953,8.828,8.828v17.655C317.779,496.16,301.939,512,282.468,512z">
+                                            </path>
+                                            <path style="fill:#FFC36E;"
+                                                d="M61.807,247.172c35.283-17.655,52.938,0,52.938,0l141.241-220.69 C149.875,26.483,63.694,127.142,61.807,247.172z">
+                                            </path>
+                                            <path style="fill:#FFB464;"
+                                                d="M114.773,247.172c-0.028,0,44.11-17.655,79.421,0l61.793-220.69 C178.818,26.483,116.145,127.142,114.773,247.172z">
+                                            </path>
+                                            <path style="fill:#FFD782;"
+                                                d="M476.675,247.172c-17.628-17.655-26.455,0-26.455,0L256.013,26.483 C376.597,26.483,474.531,127.142,476.675,247.172z">
+                                            </path>
+                                            <path style="fill:#FFC36E;"
+                                                d="M450.193,247.172c-35.283-17.655-52.938,0-52.938,0L256.013,26.483 C362.125,26.483,448.306,127.142,450.193,247.172z">
+                                            </path>
+                                            <path style="fill:#FFD782;"
+                                                d="M397.227,247.172c0.028,0-44.11-17.655-79.421,0l-61.793-220.69 C333.182,26.483,395.855,127.142,397.227,247.172z">
+                                            </path>
+                                            <path style="fill:#FFC36E;"
+                                                d="M255.986,233.518c26.585,0,49.717,5.514,61.766,13.654c-0.6-120.031-28.013-220.69-61.766-220.69 s-61.165,100.659-61.766,220.69C206.27,239.032,229.4,233.518,255.986,233.518z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h6 class="text-warning text-end">Use Umbrella</h6>
+                                    <h5 class="text-end" style="margin-top: -.5rem;">Drought Alert</h5>
+                                </div>
+                            </div>
+                            <div>
+                                <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat
+                                    cramps
+                                    and
+                                    heat exhaustion are likely; heat stroke is probable with continued activity.</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!-- carry water alert (IS DAY) -->
+                        <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                            <div class=" d-flex justify-content-between">
+                                <div>
+                                    <svg width="40" height="40" fill="#57d5ff" viewBox="0 0 50 50"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        stroke="#57d5ff">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M22 0C20.355469 0 19 1.355469 19 3L19 6C19 6.523438 19.183594 7.058594 19.5625 7.4375C19.84375 7.71875 20.203125 7.898438 20.59375 7.96875C20.445313 8.085938 20.261719 8.175781 20.03125 8.21875L20 8.21875C15.457031 9.214844 12 13.222656 12 18.09375L12 21C12 22.257813 12.890625 23.152344 14 23.59375L14 36.40625C12.890625 36.847656 12 37.742188 12 39L12 45C12 47.746094 14.253906 50 17 50L33 50C35.746094 50 38 47.746094 38 45L38 39C38 37.742188 37.109375 36.847656 36 36.40625L36 23.59375C37.109375 23.152344 38 22.257813 38 21L38 18.09375C38 13.222656 34.542969 9.214844 30 8.21875L29.96875 8.21875C29.738281 8.175781 29.554688 8.085938 29.40625 7.96875C29.796875 7.898438 30.15625 7.71875 30.4375 7.4375C30.816406 7.058594 31 6.523438 31 6L31 3C31 1.355469 29.644531 0 28 0 Z M 22 2L28 2C28.554688 2 29 2.445313 29 3L29 6L21 6L21 3C21 2.445313 21.445313 2 22 2 Z M 22.65625 8L27.34375 8C27.707031 9.046875 28.445313 9.929688 29.59375 10.15625L29.59375 10.1875C29.601563 10.1875 29.617188 10.1875 29.625 10.1875C33.269531 11 36 14.175781 36 18.09375L36 21C36 21.554688 35.554688 22 35 22L18 22L18 24L34 24L34 36L18 36L18 38L35 38C35.554688 38 36 38.445313 36 39L36 45C36 46.65625 34.65625 48 33 48L17 48C15.34375 48 14 46.65625 14 45L14 39C14 38.445313 14.445313 38 15 38L16 38L16 22L15 22C14.445313 22 14 21.554688 14 21L14 18.09375C14 14.175781 16.730469 11 20.375 10.1875C20.390625 10.183594 20.390625 10.160156 20.40625 10.15625C21.554688 9.929688 22.292969 9.046875 22.65625 8Z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h6 class="text-warning text-end">Carry Water</h6>
+                                    <h5 class="text-end" style="margin-top: -.5rem;">Dehydration Alert</h5>
+                                </div>
+                            </div>
+                            <div>
+                                <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">
+                                    Dehydration
+                                    occurs when your body doesn't have enough water and other fluids to carry out its
+                                    normal
+                                    functions.</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <p class="rounded-2 py-1 text-center mt-3 bg-success text-white" style="font-weight: bold;">No
+                            Alert
+                            For
+                            Now</p>
+                        {% endif %}
+                        <!-- {% endif %} -->
+
+            </div>
+        </div>
+        <!-- RIGHT COL -->
+        <div class=" col">
+            <div class="flex-grow-1 container">
+                <h3 class="text-center mt-5">All Alert Types</h3>
+                <p class=" text-dark-emphasis mb-5 text-center" style="margin-top: -.8rem;">----------------- all possible alerts -----------------</p>
+
+                <!-- rain alert -->
+                <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                    <div class=" d-flex justify-content-between">
+                        <div>
+                            <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                                class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000"
+                                width="40" height="40">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill="#66757F"
+                                        d="M9 28.5a1.5 1.5 0 0 1 3 0v.5s0 3 3 3s3-3 3-3V3.5a1.5 1.5 0 1 1 3 0V29s0 6-6 6s-6-6-6-6v-.5z">
+                                    </path>
+                                    <path fill="#744EAA"
+                                        d="M19.5 4C28.612 4 36 9.82 36 17c0 0 0 2-1 2s-3-2-3-2H7s-2 2-3 2s-1-2-1-2C3 9.82 10.387 4 19.5 4z">
+                                    </path>
+                                    <path fill="#9266CC"
+                                        d="M19.5 4C26.403 4 32 9.82 32 17c0 0 0 2-2 2s-5-2-5-2H14s-3 2-5 2s-2-2-2-2C7 9.82 12.596 4 19.5 4z">
+                                    </path>
+                                    <path fill="#744EAA"
+                                        d="M19.5 4C23.09 4 25 9.82 25 17c0 0-3 2-5 2h-1c-2 0-5-2-5-2c0-7.18 1.91-13 5.5-13z">
+                                    </path>
+                                    <path fill="#5DADEC"
+                                        d="M30.383 4.472a2.964 2.964 0 0 0 1.028 4.099c1.431.852 3.291.398 4.154-1.014a2.949 2.949 0 0 0-.021-3.114L33.061.09l-2.678 4.382zm-8.001 3a2.964 2.964 0 0 0 1.028 4.099c1.431.852 3.291.398 4.154-1.014a2.949 2.949 0 0 0-.021-3.114L25.061 3.09l-2.679 4.382zm-11.947-3a2.964 2.964 0 0 0 1.028 4.099c1.431.852 3.291.398 4.154-1.014a2.944 2.944 0 0 0-.022-3.114L13.114.09l-2.679 4.382zm-10 5.91a2.964 2.964 0 0 0 1.028 4.099c1.431.851 3.291.398 4.154-1.014a2.944 2.944 0 0 0-.022-3.114L3.114 6L.435 10.382z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6 style="color: aqua;" class="text-end">Use Umbrella</h6>
+                            <h5 style="margin-top: -.5rem;" class=" text-end">Rain Alert</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-align: justify; font-size: 14px; color: gray;line-height: 14px;">Heat cramps and
+                            heat
+                            exhaustion are likely; heat stroke is probable with continued activity.</p>
+                    </div>
+                </div>
+                <!-- extereme heat alert -->
+                <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                    <div class=" d-flex justify-content-between">
+                        <div>
+                            <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                fill="#000000" width="40" height="40">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M570.8 742c0.5-2.9 0.9-5.8 0.9-8.8V418.5H458.4v314.6c0 3 0.4 5.9 0.9 8.8-34.3 19.5-57.5 56.3-57.5 98.5 0 62.6 50.7 113.3 113.3 113.3 62.6 0 113.3-50.7 113.3-113.3-0.1-42.2-23.3-79-57.6-98.4z"
+                                        fill="#ff0033"></path>
+                                    <path
+                                        d="M594.3 730.3V194.8c0-43.7-35.6-79.3-79.3-79.3s-79.3 35.6-79.3 79.3v535.4c-35.2 25.4-56.6 66.5-56.6 110.2 0 75 61 135.9 135.9 135.9s136-60.8 136-135.8c0-43.7-21.4-84.8-56.7-110.2zM515 931.1c-50 0-90.6-40.6-90.6-90.6 0-32.1 17.4-62.1 45.3-78.4 7-4 11.3-11.5 11.3-19.6v-40.8h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481V498h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-45.3h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481V226h11.3c6.3 0 11.3-5.1 11.3-11.3 0-6.3-5.1-11.3-11.3-11.3H481v-8.5c0-18.7 15.2-34 34-34 18.7 0 34 15.2 34 34v547.7c0 8.1 4.3 15.6 11.3 19.6 28 16.2 45.3 46.2 45.3 78.4 0.1 49.9-40.6 90.5-90.6 90.5z"
+                                        fill="#454545"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6 class=" text-warning text-end">Heat Alert</h6>
+                            <h5 style="margin-top: -.5rem;" class=" text-end">Extreme Caution</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps and
+                            heat exhaustion are possible. Continuing activity could result in heat stroke</p>
+                    </div>
+                </div>
+                <!-- heat umbrella alert (IS DAY) -->
+                <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                    <div class=" d-flex justify-content-between">
+                        <div>
+                            <svg height="40px" width="40px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path style="fill:#FFB464;"
+                                        d="M35.325,247.172c17.628-17.655,26.455,0,26.455,0l194.207-220.69 C135.403,26.483,37.469,127.142,35.325,247.172z">
+                                    </path>
+                                    <path style="fill:#AFB9D2;"
+                                        d="M282.468,512c-19.47,0-35.31-15.84-35.31-35.31V8.828c0-4.875,3.953-8.828,8.828-8.828 s8.828,3.953,8.828,8.828V476.69c0,9.735,7.921,17.655,17.655,17.655c9.735,0,17.655-7.921,17.655-17.655v-17.655 c0-4.875,3.953-8.828,8.828-8.828s8.828,3.953,8.828,8.828v17.655C317.779,496.16,301.939,512,282.468,512z">
+                                    </path>
+                                    <path style="fill:#FFC36E;"
+                                        d="M61.807,247.172c35.283-17.655,52.938,0,52.938,0l141.241-220.69 C149.875,26.483,63.694,127.142,61.807,247.172z">
+                                    </path>
+                                    <path style="fill:#FFB464;"
+                                        d="M114.773,247.172c-0.028,0,44.11-17.655,79.421,0l61.793-220.69 C178.818,26.483,116.145,127.142,114.773,247.172z">
+                                    </path>
+                                    <path style="fill:#FFD782;"
+                                        d="M476.675,247.172c-17.628-17.655-26.455,0-26.455,0L256.013,26.483 C376.597,26.483,474.531,127.142,476.675,247.172z">
+                                    </path>
+                                    <path style="fill:#FFC36E;"
+                                        d="M450.193,247.172c-35.283-17.655-52.938,0-52.938,0L256.013,26.483 C362.125,26.483,448.306,127.142,450.193,247.172z">
+                                    </path>
+                                    <path style="fill:#FFD782;"
+                                        d="M397.227,247.172c0.028,0-44.11-17.655-79.421,0l-61.793-220.69 C333.182,26.483,395.855,127.142,397.227,247.172z">
+                                    </path>
+                                    <path style="fill:#FFC36E;"
+                                        d="M255.986,233.518c26.585,0,49.717,5.514,61.766,13.654c-0.6-120.031-28.013-220.69-61.766-220.69 s-61.165,100.659-61.766,220.69C206.27,239.032,229.4,233.518,255.986,233.518z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6 class="text-warning text-end">Use Umbrella</h6>
+                            <h5 class="text-end" style="margin-top: -.5rem;">Drought Alert</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps and
+                            heat exhaustion are likely; heat stroke is probable with continued activity.</p>
+                    </div>
+                </div>
+                <!-- carry water alert (IS DAY) -->
+                <div class=" bg-dark border border-warning-subtle p-3 rounded-3 mt-3">
+                    <div class=" d-flex justify-content-between">
+                        <div>
+                            <svg width="40" height="40" fill="#57d5ff" viewBox="0 0 50 50"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                stroke="#57d5ff">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M22 0C20.355469 0 19 1.355469 19 3L19 6C19 6.523438 19.183594 7.058594 19.5625 7.4375C19.84375 7.71875 20.203125 7.898438 20.59375 7.96875C20.445313 8.085938 20.261719 8.175781 20.03125 8.21875L20 8.21875C15.457031 9.214844 12 13.222656 12 18.09375L12 21C12 22.257813 12.890625 23.152344 14 23.59375L14 36.40625C12.890625 36.847656 12 37.742188 12 39L12 45C12 47.746094 14.253906 50 17 50L33 50C35.746094 50 38 47.746094 38 45L38 39C38 37.742188 37.109375 36.847656 36 36.40625L36 23.59375C37.109375 23.152344 38 22.257813 38 21L38 18.09375C38 13.222656 34.542969 9.214844 30 8.21875L29.96875 8.21875C29.738281 8.175781 29.554688 8.085938 29.40625 7.96875C29.796875 7.898438 30.15625 7.71875 30.4375 7.4375C30.816406 7.058594 31 6.523438 31 6L31 3C31 1.355469 29.644531 0 28 0 Z M 22 2L28 2C28.554688 2 29 2.445313 29 3L29 6L21 6L21 3C21 2.445313 21.445313 2 22 2 Z M 22.65625 8L27.34375 8C27.707031 9.046875 28.445313 9.929688 29.59375 10.15625L29.59375 10.1875C29.601563 10.1875 29.617188 10.1875 29.625 10.1875C33.269531 11 36 14.175781 36 18.09375L36 21C36 21.554688 35.554688 22 35 22L18 22L18 24L34 24L34 36L18 36L18 38L35 38C35.554688 38 36 38.445313 36 39L36 45C36 46.65625 34.65625 48 33 48L17 48C15.34375 48 14 46.65625 14 45L14 39C14 38.445313 14.445313 38 15 38L16 38L16 22L15 22C14.445313 22 14 21.554688 14 21L14 18.09375C14 14.175781 16.730469 11 20.375 10.1875C20.390625 10.183594 20.390625 10.160156 20.40625 10.15625C21.554688 9.929688 22.292969 9.046875 22.65625 8Z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6 class="text-warning text-end">Carry Water</h6>
+                            <h5 class="text-end" style="margin-top: -.5rem;">Dehydration Alert</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Dehydration
+                            occurs when your body doesn't have enough water and other fluids to carry out its normal
+                            functions.</p>
+                    </div>
+                </div>
+                <!-- danger heat alert -->
+                <div class=" bg-dark border border-danger-subtle p-3 rounded-3 mt-3">
+                    <div class=" d-flex justify-content-between">
+                        <div>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="35"
+                                height="35">
+                                <path
+                                    d="M21.7605 15.92L15.3605 4.4C14.5005 2.85 13.3105 2 12.0005 2C10.6905 2 9.50047 2.85 8.64047 4.4L2.24047 15.92C1.43047 17.39 1.34047 18.8 1.99047 19.91C2.64047 21.02 3.92047 21.63 5.60047 21.63H18.4005C20.0805 21.63 21.3605 21.02 22.0105 19.91C22.6605 18.8 22.5705 17.38 21.7605 15.92ZM11.2505 9C11.2505 8.59 11.5905 8.25 12.0005 8.25C12.4105 8.25 12.7505 8.59 12.7505 9V14C12.7505 14.41 12.4105 14.75 12.0005 14.75C11.5905 14.75 11.2505 14.41 11.2505 14V9ZM12.7105 17.71C12.6605 17.75 12.6105 17.79 12.5605 17.83C12.5005 17.87 12.4405 17.9 12.3805 17.92C12.3205 17.95 12.2605 17.97 12.1905 17.98C12.1305 17.99 12.0605 18 12.0005 18C11.9405 18 11.8705 17.99 11.8005 17.98C11.7405 17.97 11.6805 17.95 11.6205 17.92C11.5605 17.9 11.5005 17.87 11.4405 17.83C11.3905 17.79 11.3405 17.75 11.2905 17.71C11.1105 17.52 11.0005 17.26 11.0005 17C11.0005 16.74 11.1105 16.48 11.2905 16.29C11.3405 16.25 11.3905 16.21 11.4405 16.17C11.5005 16.13 11.5605 16.1 11.6205 16.08C11.6805 16.05 11.7405 16.03 11.8005 16.02C11.9305 15.99 12.0705 15.99 12.1905 16.02C12.2605 16.03 12.3205 16.05 12.3805 16.08C12.4405 16.1 12.5005 16.13 12.5605 16.17C12.6105 16.21 12.6605 16.25 12.7105 16.29C12.8905 16.48 13.0005 16.74 13.0005 17C13.0005 17.26 12.8905 17.52 12.7105 17.71Z"
+                                    fill="#ff0000"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6 class=" text-danger text-end">Heat Alert</h6>
+                            <h5 style="margin-top: -.5rem;" class=" text-end">Danger Caution</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-align: justify; font-size: 14px; color: gray; line-height: 14px;">Heat cramps
+                            and
+                            heat exhaustion are likely; heat stroke is probable with continued activity.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 {% endblock "leftAndRight" %}

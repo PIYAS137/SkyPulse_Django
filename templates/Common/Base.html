@@ -16,6 +16,20 @@
                 max-width: 100px;
             }
         }
+        input{
+            border: none;
+            padding: .6rem .5rem;
+            margin-left: .5rem;
+            border-radius: 5px;
+            background-color: rgb(48, 48, 48);
+            outline: none;
+            color:white
+        }
+        label{
+            font-weight: 300;
+            font-size: 1.4rem;
+            text-transform: capitalize;
+        }
     </style>
 </head>
 
@@ -40,7 +54,7 @@
                     </li>
                     <!-- Alert Page Link -->
                     <li style="text-align:center; margin-top:20px;">
-                        <a href="{% url 'alert' %}"  style="text-decoration: none; color:whitesmoke;">
+                        <a href="{% url 'alert' %}" style="text-decoration: none; color:whitesmoke;">
                             <script src="https://cdn.lordicon.com/lordicon.js"></script>
                             <lord-icon src="https://cdn.lordicon.com/ygvjgdmk.json" trigger="loop" delay="1000"
                                 colors="primary:#eeca66" style="width:50px;height:50px">
@@ -48,9 +62,20 @@
                             <p style="font-size:12px;margin-top: -3px;">Alerts</p>
                         </a>
                     </li>
+                    <!-- Search Page Link -->
+                    <li style="text-align:center; margin-top:20px;">
+                        <a href="{% url 'search' %}" style="text-decoration: none; color:whitesmoke;">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/nchegqgo.json" trigger="loop" delay="1000" stroke="bold"
+                                colors="primary:#ffffff,secondary:#c7166f" style="width:50px;height:50px">
+                            </lord-icon>
+                            <p style="font-size:12px;margin-top: -3px;">Search</p>
+                        </a>
+                    </li>
                     <!-- Setting Page Link -->
                     <li style="text-align:center; margin-top:20px;">
-                        <a href="{% url 'setting' %}"  style="text-decoration: none; color:whitesmoke;">
+                        <a href="{% url 'setting' %}" style="text-decoration: none; color:whitesmoke;">
                             <script src="https://cdn.lordicon.com/lordicon.js"></script>
                             <script src="https://cdn.lordicon.com/lordicon.js"></script>
                             <lord-icon src="https://cdn.lordicon.com/dmgxtuzn.json" trigger="loop" stroke="bold"
@@ -61,7 +86,7 @@
                     </li>
                     <!-- About Page Link -->
                     <li style="text-align:center; margin-top:20px;">
-                        <a href="{% url 'about' %}"  style="text-decoration: none; color:whitesmoke;">
+                        <a href="{% url 'about' %}" style="text-decoration: none; color:whitesmoke;">
                             <script src="https://cdn.lordicon.com/lordicon.js"></script>
                             <lord-icon src="https://cdn.lordicon.com/uecgmesg.json" trigger="loop" delay="1000"
                                 stroke="bold" colors="primary:#ffffff,secondary:#a5e830" style="width:55px;height:55px">
@@ -71,16 +96,34 @@
                     </li>
                 </ul>
                 <!-- LOGO -->
-                <div>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top: 30px; rotate:270deg;text-align:center;width:100%;">E</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">S</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">L</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">U</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">P</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">_</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">Y</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">K</h3>
-                    <h3 style="opacity:0.05 ;font-size: 55px;margin-top:-30px;rotate:270deg;text-align:center;width:100%;">S</h3>
+                <div style="margin-top: -1.5rem;">
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top: 38px; rotate:270deg;text-align:center;width:100%;">
+                        E</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        S</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        L</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        U</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        P</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        _</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        Y</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        K</h3>
+                    <h3
+                        style="opacity:0.07 ;font-size: 55px;margin-top:-38px;rotate:270deg;text-align:center;width:100%;">
+                        S</h3>
                 </div>
                 <!-- LOGO -->
                 <!-- MENU END -->
